@@ -8,20 +8,16 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+
 /**
  *
  * @author Tigrou
  */
 public class A2TP5 {
-    
 
-    
-    
-    
+    public static void main(String[] args) throws Exception {
 
-    public static void main(String[] args) throws Exception {    
-        
-    //Connexion à mon serveur
+        //Connexion à mon serveur
         Socket socket = new Socket("localhost", 4444);
 
         //to get the ip address
@@ -40,23 +36,23 @@ public class A2TP5 {
             String nomPiece = inSocket.readLine();
             maFenetre.afficherPieces(nomPiece);
         }
-        
-      
-        
-        
-        do {maFenetre.appuyerBouton();
-                
-        } while (maFenetre.appuiBouton == false);
-                outSocket.println(maFenetre.nameF);
-                outSocket.println(maFenetre.pieceChoisie);
-                outSocket.println(maFenetre.nbPlacesChoisies);
 
-                
-                maFenetre.setTextgetjLabel(Integer.valueOf(inSocket.readLine()));
+
+
+
+        do {
+            maFenetre.appuyerBouton();
+
+        } while (maFenetre.appuiBouton == false);
+        outSocket.println(maFenetre.nameF);
+        outSocket.println(maFenetre.pieceChoisie);
+        outSocket.println(maFenetre.nbPlacesChoisies);
+
+
+        maFenetre.setTextgetjLabel(Integer.valueOf(inSocket.readLine()));
         /*System.out.println("coucou" + maFenetre.pieceChoisie);
-        System.out.println("Coucou " +maFenetre.nbPlacesChoisies);
-        System.out.println("Coucou " +maFenetre.nameF);
-*/
+         System.out.println("Coucou " +maFenetre.nbPlacesChoisies);
+         System.out.println("Coucou " +maFenetre.nameF);
+         */
     }
 }
-
