@@ -6,7 +6,7 @@ package a2tp5;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,9 +16,13 @@ public class Fenetre extends javax.swing.JFrame implements ActionListener {
 
     String pieceChoisie, nbPlacesChoisies, nameF;
     boolean appuiBouton = false;
+    private int rang;
 
     public Fenetre() {
+
         initComponents();
+
+        this.setTitle("Réservation");
         jPanel1.setVisible(true);
         nameTheatreCBB.setEnabled(false);
         nameTheatreCBB.removeAllItems();
@@ -28,6 +32,9 @@ public class Fenetre extends javax.swing.JFrame implements ActionListener {
         nameTheatreCBB.addItem("Choisir la pièce");
         for (int i = 1; i <= 5; i++) {
             nbrPlaceCBB.addItem(i);
+
+
+
         }
     }
 
@@ -51,13 +58,21 @@ public class Fenetre extends javax.swing.JFrame implements ActionListener {
     }
 
     public void setTextgetjLabel(int reponseServ) {
+
+        JOptionPane jop2 = new JOptionPane();
+
         if (reponseServ == -1) {
-            jLabel1.setText("Mll ou M " + nameTXTF.getText());
-            jLabel2.setText("Vous avez réservé " + nbPlacesChoisies + " place(s)");
-            jLabel3.setText("pour la pièce de théatre " + pieceChoisie);
+            jop2.showMessageDialog(null, "Mll. M. " + nameTXTF.getText() + " vous avez réservé " + nbPlacesChoisies + " place(s) pour la pièce de théatre : " + pieceChoisie,
+                    "Réservation", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            jLabel1.setText("Il n'y a plus de place !");
+            jop2.showMessageDialog(null, "Il n'y a plus de place !",
+                    "Réservation", JOptionPane.INFORMATION_MESSAGE);
+//"Il n'y a plus de place !"
         }
+
+
+
+
     }
 
     @SuppressWarnings("unchecked")
@@ -73,9 +88,6 @@ public class Fenetre extends javax.swing.JFrame implements ActionListener {
         okBTN = new javax.swing.JButton();
         nameTheatreCBB = new javax.swing.JComboBox();
         nbrPlaceCBB = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,36 +130,24 @@ public class Fenetre extends javax.swing.JFrame implements ActionListener {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nameTXTF, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                    .addComponent(nameTheatreJLB)
+                    .addComponent(nameJLB)
+                    .addComponent(nbrPlacceJLB)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nameTXTF, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                            .addComponent(nameTheatreJLB)
-                            .addComponent(nameJLB)
-                            .addComponent(nbrPlacceJLB)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(valideJLB)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(okBTN))
-                            .addComponent(nameTheatreCBB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(nbrPlaceCBB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 26, Short.MAX_VALUE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(valideJLB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(okBTN))
+                    .addComponent(nameTheatreCBB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nbrPlaceCBB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,13 +168,7 @@ public class Fenetre extends javax.swing.JFrame implements ActionListener {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(valideJLB)
                     .addComponent(okBTN))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -188,7 +182,7 @@ public class Fenetre extends javax.swing.JFrame implements ActionListener {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(125, 125, 125))
         );
 
         pack();
@@ -241,9 +235,6 @@ public class Fenetre extends javax.swing.JFrame implements ActionListener {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nameJLB;
     private javax.swing.JTextField nameTXTF;
