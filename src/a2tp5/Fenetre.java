@@ -19,9 +19,7 @@ public class Fenetre extends javax.swing.JFrame implements ActionListener {
     private int rang;
 
     public Fenetre() {
-
         initComponents();
-
         this.setTitle("Réservation");
         jPanel1.setVisible(true);
         nameTheatreCBB.setEnabled(false);
@@ -32,9 +30,6 @@ public class Fenetre extends javax.swing.JFrame implements ActionListener {
         nameTheatreCBB.addItem("Choisir la pièce");
         for (int i = 1; i <= 5; i++) {
             nbrPlaceCBB.addItem(i);
-
-
-
         }
     }
 
@@ -58,21 +53,16 @@ public class Fenetre extends javax.swing.JFrame implements ActionListener {
     }
 
     public void setTextgetjLabel(int reponseServ) {
-
-        JOptionPane jop2 = new JOptionPane();
+        JOptionPane reponseReservation = new JOptionPane();
 
         if (reponseServ == -1) {
-            jop2.showMessageDialog(null, "Mll. M. " + nameTXTF.getText() + " vous avez réservé " + nbPlacesChoisies + " place(s) pour la pièce de théatre : " + pieceChoisie,
+            reponseReservation.showMessageDialog(null, "Mll. M. " + nameTXTF.getText() + " vous avez réservé " + nbPlacesChoisies + " place(s) pour la pièce de théatre : " + pieceChoisie,
                     "Réservation", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            jop2.showMessageDialog(null, "Il n'y a plus de place !",
+            reponseReservation.showMessageDialog(null, "Il n'y a plus de place !",
                     "Réservation", JOptionPane.INFORMATION_MESSAGE);
 //"Il n'y a plus de place !"
         }
-
-
-
-
     }
 
     @SuppressWarnings("unchecked")

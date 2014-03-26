@@ -27,7 +27,6 @@ public class A2TP5 {
         }
         clip.loop();
 
-
         //Connexion à mon serveur
         Socket socket = new Socket("localhost", 4444);
 
@@ -39,7 +38,6 @@ public class A2TP5 {
         BufferedReader inSocket = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
         Fenetre maFenetre = new Fenetre();
-
         maFenetre.setVisible(true);
 
         int nbPieces = Integer.valueOf(inSocket.readLine());
@@ -50,9 +48,7 @@ public class A2TP5 {
 
         do {
             maFenetre.appuyerBouton();
-
         } while (maFenetre.appuiBouton == false);
-
         outSocket.println(maFenetre.nameF);
         outSocket.println(maFenetre.pieceChoisie);
         outSocket.println(maFenetre.nbPlacesChoisies);
